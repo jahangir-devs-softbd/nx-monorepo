@@ -34,7 +34,18 @@
       "options": {
         "targetName": "test"
       },
-      "exclude": ["apps/test-application-e2e/**/*"]
+      "exclude": ["apps/test-application-e2e/**/*", "apps/second-app-e2e/**/*"]
     }
-  ]
+  ],
+  "targetDefaults": {
+    "@nx/js:tsc": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    }
+  },
+  "workspaceLayout": {
+    "appsDir": "apps",
+    "libsDir": "libs"
+  }
 }

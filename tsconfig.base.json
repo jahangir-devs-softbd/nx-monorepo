@@ -14,7 +14,17 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@test-workspace/kafka/utils": ["libs/kafka/utils/src/index.ts"],
+      "@test-workspace/lib": ["lib/src/index.ts"],
+      "@test-workspace/myapp/lib": ["libs/myapp/lib/src/index.ts"],
+      "@test-workspace/schema-registry": ["libs/schema-registry/src/index.ts"],
+      "@test-workspace/utils/kafka": ["libs/utils/kafka/src/index.ts"],
+      "@test-workspace/utils/logging": ["libs/utils/logging/src/index.ts"],
+      "@test-workspace/utils/rabbit-mq": ["libs/utils/rabbit-mq/src/index.ts"],
+      "@test-workspace/utils/redis": ["libs/utils/redis/src/index.ts"],
+      "@test-workspace/utils/tracing": ["libs/utils/tracing/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
