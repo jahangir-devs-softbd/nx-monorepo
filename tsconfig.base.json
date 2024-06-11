@@ -19,6 +19,8 @@
       "@test-workspace/lib": ["lib/src/index.ts"],
       "@test-workspace/myapp/lib": ["libs/myapp/lib/src/index.ts"],
       "@test-workspace/schema-registry": ["libs/schema-registry/src/index.ts"],
+      "@test-workspace/shared": ["libs/shared/src/index.ts"],
+      "@test-workspace/shared/database": ["libs/shared/database/src/index.ts"],
       "@test-workspace/utils/kafka": ["libs/utils/kafka/src/index.ts"],
       "@test-workspace/utils/logging": ["libs/utils/logging/src/index.ts"],
       "@test-workspace/utils/rabbit-mq": ["libs/utils/rabbit-mq/src/index.ts"],

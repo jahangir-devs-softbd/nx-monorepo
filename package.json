@@ -40,7 +40,9 @@
     "dep-graph": "nx dep-graph",
     "e2e": "ng e2e",
     "help": "nx help",
-    "lint": "nx lint"
+    "lint": "nx lint",
+    "lint:all": "nx run-many --target=lint --all",
+    "lint:varbose": "nx lint --verbose"
   },
   "private": true,
   "dependencies": {
@@ -71,6 +73,7 @@
     "@types/node": "~18.16.9",
     "@typescript-eslint/eslint-plugin": "^7.3.0",
     "@typescript-eslint/parser": "^7.3.0",
+    "env-cmd": "^10.1.0",
     "eslint": "~8.57.0",
     "eslint-config-prettier": "^9.0.0",
     "husky": "^9.0.11",

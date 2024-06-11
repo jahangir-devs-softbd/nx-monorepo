@@ -1,0 +1,32 @@
+globally install nx
+npm i -g nx
+
+linting command
+npm run lint <project_name>
+
+ build specific app
+ nx build test-application
+
+ add an npm package
+ nx add winston
+
+ serve a specific app
+ nx serve test-application-e2e
+
+create a workspace
+npx create-nx-workspace test-workspace --preset=nest
+
+generate a new app
+nx g @nx/nest:app second-app
+
+create a library
+nx g @nx/nest:lib lib
+nx g @nx/nest:library schema-registry
+
+generate library in specific library directory
+ nx g @nx/nest:library logging --directory=utils
+ nx g @nx/nest:library tracing --directory=utils
+
+
+
+
