@@ -1,0 +1,118 @@
+import { DataSource } from "typeorm";
+import { DivisionEntity } from "@lams/shared/database/entities/location/division.entity";
+
+export class DivisionSeeder {
+  data: any[] = [
+    {
+      id: 1,
+      name_en: "Barisal",
+      name: "বরিশাল",
+      bbs_code: "10",
+      row_status: 1,
+      created_at: "2024-04-02 12:33:00",
+      updated_at: "2024-04-02 12:33:00",
+      deleted_at: null,
+      created_by: null,
+      updated_by: null,
+      deleted_by: null,
+    },
+    {
+      id: 2,
+      name_en: "Chittagong",
+      name: "চট্টগ্রাম",
+      bbs_code: "20",
+      row_status: 1,
+      created_at: "2024-04-02 12:33:00",
+      updated_at: "2024-04-02 12:33:00",
+      deleted_at: null,
+      created_by: null,
+      updated_by: null,
+      deleted_by: null,
+    },
+    {
+      id: 3,
+      name_en: "Dhaka",
+      name: "ঢাকা",
+      bbs_code: "30",
+      row_status: 1,
+      created_at: "2024-04-02 12:33:00",
+      updated_at: "2024-04-02 12:33:00",
+      deleted_at: null,
+      created_by: null,
+      updated_by: null,
+      deleted_by: null,
+    },
+    {
+      id: 4,
+      name_en: "Khulna",
+      name: "খুলনা",
+      bbs_code: "40",
+      row_status: 1,
+      created_at: "2024-04-02 12:33:00",
+      updated_at: "2024-04-02 12:33:00",
+      deleted_at: null,
+      created_by: null,
+      updated_by: null,
+      deleted_by: null,
+    },
+    {
+      id: 5,
+      name_en: "Rajshahi",
+      name: "রাজশাহী",
+      bbs_code: "50",
+      row_status: 1,
+      created_at: "2024-04-02 12:33:00",
+      updated_at: "2024-04-02 12:33:00",
+      deleted_at: null,
+      created_by: null,
+      updated_by: null,
+      deleted_by: null,
+    },
+    {
+      id: 6,
+      name_en: "Rangpur",
+      name: "রংপুর",
+      bbs_code: "55",
+      row_status: 1,
+      created_at: "2024-04-02 12:33:00",
+      updated_at: "2024-04-02 12:33:00",
+      deleted_at: null,
+      created_by: null,
+      updated_by: null,
+      deleted_by: null,
+    },
+    {
+      id: 7,
+      name_en: "Sylhet",
+      name: "সিলেট",
+      bbs_code: "60",
+      row_status: 1,
+      created_at: "2024-04-02 12:33:00",
+      updated_at: "2024-04-02 12:33:00",
+      deleted_at: null,
+      created_by: null,
+      updated_by: null,
+      deleted_by: null,
+    },
+    {
+      id: 8,
+      name_en: "Mymensingh",
+      name: "ময়মনসিংহ",
+      bbs_code: "45",
+      row_status: 1,
+      created_at: "2024-04-02 12:33:00",
+      updated_at: "2024-04-02 12:33:00",
+      deleted_at: null,
+      created_by: null,
+      updated_by: null,
+      deleted_by: null,
+    },
+  ];
+
+  async run(dataSource: DataSource): Promise<any> {
+    await dataSource.query("SET FOREIGN_KEY_CHECKS=0");
+    await dataSource.getRepository(DivisionEntity).clear();
+    await dataSource.manager.save(DivisionEntity, this.data);
+    await dataSource.query("SET FOREIGN_KEY_CHECKS=1");
+  }
+}

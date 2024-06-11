@@ -27,6 +27,7 @@ generate library in specific library directory
  nx g @nx/nest:library logging --directory=utils
  nx g @nx/nest:library tracing --directory=utils
 
-
+migrations
+npm migration:create libs/shared/database/migrations/create-entity-table
 
 

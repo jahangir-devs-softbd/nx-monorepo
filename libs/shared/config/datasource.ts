@@ -11,12 +11,12 @@ const AppDataSource = new DataSource({
   username: ENV.DB_USERNAME,
   password: ENV.DB_PASSWORD,
   database: ENV.DB_DATABASE,
-  entities: [sourcePath + '/database/entities/**/*{.ts,.js}'],
-  // entities: [path.relative(process.cwd(), "/libs/shared/src/database/entities/**/*{.ts,.js}")],
+  entities: [sourcePath + '/mysql-database/entities/**/*{.ts,.js}'],
+  // entities: [path.relative(process.cwd(), "/libs/shared/src/mysql-database/entities/**/*{.ts,.js}")],
   extra: {
-    seeds: [sourcePath + '/database/seeds/**/*{.ts,.js}'],
-    // seeds: [path.relative(process.cwd(), "/libs/shared/src/database/seeds/**/*{.ts,.js}")],
-    factories: [sourcePath + '/database/factories/**/*{.ts,.js}'],
+    seeds: [sourcePath + '/mysql-database/seeds/**/*{.ts,.js}'],
+    // seeds: [path.relative(process.cwd(), "/libs/shared/src/mysql-database/seeds/**/*{.ts,.js}")],
+    factories: [sourcePath + '/mysql-database/factories/**/*{.ts,.js}'],
   },
   migrationsTableName: 'migrations',
   // We are using migrations, synchronize should be set to false.
@@ -33,8 +33,8 @@ const AppDataSource = new DataSource({
   // allow both start:prod and start:dev to use migrations
   // __dirname is either dist or src folder, meaning either
   // the compiled js in prod or the ts in dev
-  migrations: [sourcePath + 'database/migrations/**/*{.ts,.js}'],
-  // migrations: [path.relative(process.cwd(), "/libs/shared/src/database/migrations/**/*{.ts,.js}")],
+  migrations: [sourcePath + 'mysql-database/migrations/**/*{.ts,.js}'],
+  // migrations: [path.relative(process.cwd(), "/libs/shared/src/mysql-database/migrations/**/*{.ts,.js}")],
 });
 
 AppDataSource.initialize()

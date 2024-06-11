@@ -19,7 +19,7 @@
     "docker:dev": "docker-compose -f docker-compose.dev.yml --env-file .env.docker-compose up",
     "docker:dev:cleanup": "docker-compose -f docker-compose.dev.yml --env-file .env.docker-compose down",
     "serve:test-application": "nx serve test-application",
-    "serve:second-app": "nx serve second-app",
+    "serve:second-app": "env-cmd -f .env nx serve second-app",
     "prepare": "husky",
     "precommit": "nx lint-staged",
     "db:prisma:format-schema": "prisma format",
@@ -33,9 +33,9 @@
     "db:prisma:validate-schema": "prisma validate",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "db:typeorm:drop": "env-cmd -f .env yarn typeorm -- schema:drop -d libs/shared/src/config/datasource.ts",
-    "db:typeorm:migration:create": "env-cmd -f .env yarn typeorm -- migration:create",
-    "db.typeorm:migration:run": "env-cmd -f .env yarn typeorm migration:run -d libs/shared/src/config/datasource.ts",
-    "db.typeorm:migration:rollback": "env-cmd -f .env yarn typeorm -- migration:revert -d libs/shared/src/config/datasource.ts",
+    "db:typeorm:migration:create": "env-cmd -f .env npm typeorm -- migration:create",
+    "db.typeorm:migration:run": "env-cmd -f .env npm typeorm migration:run -d libs/shared/src/config/datasource.ts",
+    "db.typeorm:migration:rollback": "env-cmd -f .env npm typeorm -- migration:revert -d libs/shared/src/config/datasource.ts",
     "db.typeorm:seed:run": "env-cmd -f .env ts-node -r tsconfig-paths/register apps/seeder/src/main.ts seeder",
     "dep-graph": "nx dep-graph",
     "e2e": "ng e2e",
@@ -100,3 +100,5 @@
     "npm": "^10.2.4"
   }
 }
+
+// must install tsconfig-paths
