@@ -6,15 +6,14 @@ import DatabaseConfig from '../config/database.config';
 @Module({
   imports: [
     ConfigModule.forRoot({
-    isGlobal: true,
-    envFilePath: `.env.${process.env.APP_ENV}`,
+      isGlobal: true,
     }),
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
       useFactory: (config: ConfigService) => {
         return DatabaseConfig(config);
-      }
-    })
+      },
+    }),
   ],
   providers: [],
   exports: [],
