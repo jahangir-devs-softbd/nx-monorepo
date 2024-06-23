@@ -31,7 +31,109 @@ or \
 ### clean cache
 `npm nx clear-cache`
 
+---
 
+# Database replication
+
+run docker compose file using `docker compose up -D`
+
+Edit master and replica config file for data synchronization through relay log \
+mysql/master.cnf file
+```editorconfig
+[mysqld]
+server-id=1
+log_bin=mysql-bin
+binlog_do_db=ecommerce
+```
+
+mysql/replica.cnf
+```editorconfig
+[mysqld]
+server-id=2 # Change to 3, 4 for other replicas
+relay_log=relay-bin
+log_bin=mysql-bin
+binlog_do_db=ecommerce
+read_only=1
+```
+
+master setup 
+`docker exec -it mysql-master mysql -u root -p`
+
+create user and add privileges 
+```shell
+CREATE USER 'repl_user'@'%' IDENTIFIED WITH 'mysql_native_password' BY 'repl_password';
+GRANT REPLICATION SLAVE ON *.* TO 'repl_user'@'%';
+FLUSH PRIVILEGES;
+SHOW MASTER STATUS;
+```
+
+setup replica \
+connect to replica
+`docker exec -it mysql-replica1 mysql -u root -p`
+
+in each replica shell
+```shell
+CHANGE MASTER TO
+    MASTER_HOST='master',
+    MASTER_USER='repl_user',
+    MASTER_PASSWORD='repl_password',
+    MASTER_LOG_FILE='mysql-bin.000001', # Replace with actual value
+    MASTER_LOG_POS=123; # Replace with actual value
+
+START SLAVE;
+SHOW SLAVE STATUS\G;
+```
+
+install typeorm, mysql2 then add datasource to nest database config
+```typescript
+import { DataSourceOptions } from 'typeorm';
+
+const master = {
+  type: 'mysql',
+  host: 'localhost',
+  port: 3306,
+  username: 'root',
+  password: 'rootpassword',
+  database: 'ecommerce',
+};
+
+const replicas = [
+  {
+    host: 'localhost',
+    port: 3307,
+    username: 'root',
+    password: 'rootpassword',
+    database: 'ecommerce',
+  },
+  {
+    host: 'localhost',
+    port: 3308,
+    username: 'root',
+    password: 'rootpassword',
+    database: 'ecommerce',
+  },
+  {
+    host: 'localhost',
+    port: 3309,
+    username: 'root',
+    password: 'rootpassword',
+    database: 'ecommerce',
+  }
+];
+
+export const dataSourceOptions: DataSourceOptions = {
+  type: 'mysql',
+  replication: {
+    master,
+    slaves: replicas,
+  },
+  entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+  synchronize: true,
+};
+
+```
+
+---
 
 # TestWorkspace
 
