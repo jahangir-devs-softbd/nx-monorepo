@@ -1,3 +1,38 @@
+# Basic commands
+
+### install nx
+`npm i -g nx`
+
+### create workspace
+`npx create-nx-workspace test-workspace --preset=nest`
+
+### generate new app
+`nx g @nx/nest:app second-app`
+
+### generate library
+`  nx g library lib --directory=myapp`
+
+generate library in a specific library directory \
+` nx g @nx/nest:library lib --directory=myapp` 
+
+install a package \
+`nx add husky` 
+
+### build a specific library or package
+
+` nx build test-application-e2e`
+
+serve \
+`nx serve test-application-e2e`
+
+or \
+`npm run serve:second-app`
+
+### clean cache
+`npm nx clear-cache`
+
+
+
 # TestWorkspace
 
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
